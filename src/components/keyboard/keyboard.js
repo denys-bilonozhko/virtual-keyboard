@@ -41,39 +41,34 @@ const keyboard = () => {
     }
   });
 
+  function changeLanguage(lang) {
+    document.querySelectorAll('.keyboard-button--symbol').forEach((key) => {
+      const currentKey = key;
+      currentKey.textContent = key.dataset[lang];
+    });
+  }
+
   document.body.addEventListener('keydown', (event) => {
     if (event.ctrlKey && event.altKey) {
       if (language === 'eng') {
-        document.querySelectorAll('.keyboard-button--symbol').forEach((key) => {
-          const currentKey = key;
-          currentKey.textContent = key.dataset.ru;
-        });
         language = 'ru';
-      } else if (language === 'ru') {
-        document.querySelectorAll('.keyboard-button--symbol').forEach((key) => {
-          const currentKey = key;
-          currentKey.textContent = key.dataset.eng;
-        });
+      } else {
         language = 'eng';
       }
+
+      changeLanguage(language);
     }
   });
 
   document.body.addEventListener('keydown', (event) => {
-    if (event.shiftKey) {
-      document.querySelectorAll('.keyboard-button--symbol').forEach((key) => {
-        const currentKey = key;
-        currentKey.textContent = key.dataset[`${language}upper`];
-      });
+    if (event.key === 'Shift') {
+      changeLanguage(`${language}upper`);
     }
   });
 
   document.body.addEventListener('keyup', (event) => {
     if (event.key === 'Shift') {
-      document.querySelectorAll('.keyboard-button--symbol').forEach((key) => {
-        const currentKey = key;
-        currentKey.textContent = key.dataset[language];
-      });
+      changeLanguage(language);
     }
   });
 
