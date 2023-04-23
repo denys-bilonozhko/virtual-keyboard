@@ -5,6 +5,7 @@ import textInput from '../textInput/textInput';
 
 const keyboardInput = textInput();
 let language = 'eng';
+let isCapsLock = false;
 
 const keyboard = () => {
   const keyboardLayout = document.createElement('div');
@@ -61,16 +62,40 @@ const keyboard = () => {
   });
 
   document.body.addEventListener('keydown', (event) => {
+    console.log(event);
     if (event.key === 'Shift') {
-      changeLanguage(`${language}upper`);
+      if (event.repeat) return;
+
+      if (isCapsLock) {
+        language = language.replace('upper', '');
+      } else {
+        language = `${language}upper`;
+      }
+
+      changeLanguage(language);
     }
   });
 
   document.body.addEventListener('keyup', (event) => {
     if (event.key === 'Shift') {
+      if (event.repeat) return;
+      if (isCapsLock) {
+        language = `${language}upper`;
+      } else {
+        language = language.replace('upper', '');
+      }
       changeLanguage(language);
     }
   });
+
+  function insertAtCaret(text) {
+    keyboardInput.setRangeText(
+      text,
+      keyboardInput.selectionStart,
+      keyboardInput.selectionEnd,
+      'end',
+    );
+  }
 
   function keyboardKeyDown(e) {
     keyboardInput.focus();
@@ -78,7 +103,7 @@ const keyboard = () => {
       if (e.keyCode === Number(key.dataset.keycode)) {
         e.preventDefault();
         key.classList.add('keyboard-button--pressed');
-        keyboardInput.value += key.textContent;
+        insertAtCaret(key.textContent);
       }
     });
   }
@@ -94,7 +119,30 @@ const keyboard = () => {
     });
   });
 
+  function capsLockToggle() {
+    isCapsLock = !isCapsLock;
+    document
+      .querySelector('.keyboard-button--capslock')
+      .classList.toggle('keyboard-button--pressed');
+    language = isCapsLock ? `${language}upper` : language.replace('upper', '');
+    changeLanguage(language);
+  }
+
   document.body.addEventListener('keydown', (e) => {
+    if (e.code === 'Tab') {
+      insertAtCaret('  ');
+    }
+
+    if (e.code === 'Space') {
+      insertAtCaret(' ');
+    }
+
+    if (e.code === 'CapsLock') {
+      if (e.repeat) return;
+      capsLockToggle();
+      return;
+    }
+
     document.querySelectorAll('.keyboard-button--service').forEach((key) => {
       if (key.classList.contains(`keyboard-button--${e.code.toLowerCase()}`)) {
         e.preventDefault();
@@ -106,6 +154,9 @@ const keyboard = () => {
   });
 
   document.body.addEventListener('keyup', (e) => {
+    if (e.code === 'CapsLock') {
+      return;
+    }
     document.querySelectorAll('.keyboard-button--service').forEach((key) => {
       if (key.classList.contains(`keyboard-button--${e.code.toLowerCase()}`)) {
         document
