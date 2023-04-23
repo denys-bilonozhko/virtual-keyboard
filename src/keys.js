@@ -132,7 +132,7 @@ const keys = [
     },
     {
       Backspace: {
-        classes: ['keyboard-button--service', 'keyboard-button--backspace'],
+        classes: ['keyboard-button--service'],
         eng: 'Backspace',
         keycode: 8,
       },
@@ -397,7 +397,7 @@ const keys = [
     },
     {
       Enter: {
-        classes: ['keyboard-button--service', 'keyboard-button--enter'],
+        classes: ['keyboard-button--service'],
         eng: 'Enter',
         keycode: 13,
       },
