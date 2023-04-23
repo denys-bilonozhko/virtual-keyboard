@@ -10,6 +10,7 @@ const keyboardButton = (keyObject) => {
   button.setAttribute('data-engUpper', keyObject.engUpper);
   button.setAttribute('data-ru', keyObject.ru);
   button.setAttribute('data-ruUpper', keyObject.ruUpper);
+  button.setAttribute('data-keycode', keyObject.keycode);
   button.innerText = keyObject.eng;
 
   return button;

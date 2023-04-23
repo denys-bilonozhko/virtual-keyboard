@@ -7,6 +7,7 @@ const keys = [
         ru: 'ё',
         engUpper: '~',
         ruUpper: 'Ё',
+        keycode: 192,
       },
     },
     {
@@ -16,6 +17,7 @@ const keys = [
         ru: '1',
         engUpper: '!',
         ruUpper: '!',
+        keycode: 49,
       },
     },
     {
@@ -25,6 +27,7 @@ const keys = [
         ru: '2',
         engUpper: '@',
         ruUpper: '"',
+        keycode: 50,
       },
     },
     {
@@ -34,6 +37,7 @@ const keys = [
         ru: '3',
         engUpper: '#',
         ruUpper: '№',
+        keycode: 51,
       },
     },
     {
@@ -43,6 +47,7 @@ const keys = [
         ru: '4',
         engUpper: '$',
         ruUpper: ';',
+        keycode: 52,
       },
     },
     {
@@ -52,6 +57,7 @@ const keys = [
         ru: '5',
         engUpper: '%',
         ruUpper: '%',
+        keycode: 53,
       },
     },
     {
@@ -61,6 +67,7 @@ const keys = [
         ru: '6',
         engUpper: '^',
         ruUpper: ':',
+        keycode: 54,
       },
     },
     {
@@ -70,6 +77,7 @@ const keys = [
         ru: '7',
         engUpper: '&',
         ruUpper: '?',
+        keycode: 55,
       },
     },
     {
@@ -79,6 +87,7 @@ const keys = [
         ru: '8',
         engUpper: '*',
         ruUpper: '*',
+        keycode: 56,
       },
     },
     {
@@ -88,6 +97,7 @@ const keys = [
         ru: '9',
         engUpper: '(',
         ruUpper: '(',
+        keycode: 57,
       },
     },
     {
@@ -97,6 +107,7 @@ const keys = [
         ru: '0',
         engUpper: ')',
         ruUpper: ')',
+        keycode: 48,
       },
     },
     {
@@ -106,6 +117,7 @@ const keys = [
         ru: '-',
         engUpper: '_',
         ruUpper: '_',
+        keycode: 189,
       },
     },
     {
@@ -115,20 +127,23 @@ const keys = [
         ru: '=',
         engUpper: '+',
         ruUpper: '+',
+        keycode: 187,
       },
     },
     {
       Backspace: {
         classes: ['keyboard-button--service', 'keyboard-button--backspace'],
         eng: 'Backspace',
+        keycode: 8,
       },
     },
   ],
   [
     {
       Tab: {
-        classes: ['keyboard-button--service', 'keyboard-button--caps-tab'],
+        classes: ['keyboard-button--service', 'keyboard-button--tab'],
         eng: 'Tab',
+        keycode: 9,
       },
     },
     {
@@ -138,6 +153,7 @@ const keys = [
         ru: 'й',
         engUpper: 'Q',
         ruUpper: 'Й',
+        keycode: 81,
       },
     },
     {
@@ -147,6 +163,7 @@ const keys = [
         ru: 'ц',
         engUpper: 'W',
         ruUpper: 'Ц',
+        keycode: 87,
       },
     },
     {
@@ -156,6 +173,7 @@ const keys = [
         ru: 'у',
         engUpper: 'E',
         ruUpper: 'У',
+        keycode: 69,
       },
     },
     {
@@ -165,6 +183,7 @@ const keys = [
         ru: 'к',
         engUpper: 'R',
         ruUpper: 'К',
+        keycode: 82,
       },
     },
     {
@@ -174,6 +193,7 @@ const keys = [
         ru: 'е',
         engUpper: 'T',
         ruUpper: 'Е',
+        keycode: 84,
       },
     },
     {
@@ -183,6 +203,7 @@ const keys = [
         ru: 'н',
         engUpper: 'Y',
         ruUpper: 'Н',
+        keycode: 89,
       },
     },
     {
@@ -192,6 +213,7 @@ const keys = [
         ru: 'г',
         engUpper: 'U',
         ruUpper: 'Г',
+        keycode: 85,
       },
     },
     {
@@ -201,6 +223,7 @@ const keys = [
         ru: 'ш',
         engUpper: 'I',
         ruUpper: 'Ш',
+        keycode: 73,
       },
     },
     {
@@ -210,6 +233,7 @@ const keys = [
         ru: 'щ',
         engUpper: 'O',
         ruUpper: 'Щ',
+        keycode: 79,
       },
     },
     {
@@ -219,6 +243,7 @@ const keys = [
         ru: 'з',
         engUpper: 'P',
         ruUpper: 'P',
+        keycode: 80,
       },
     },
     {
@@ -228,6 +253,7 @@ const keys = [
         ru: 'х',
         engUpper: '{',
         ruUpper: 'Х',
+        keycode: 219,
       },
     },
     {
@@ -237,6 +263,7 @@ const keys = [
         ru: 'ъ',
         engUpper: '}',
         ruUpper: 'Ъ',
+        keycode: 221,
       },
     },
     {
@@ -246,14 +273,16 @@ const keys = [
         ru: '\\',
         engUpper: '|',
         ruUpper: '/',
+        keycode: 220,
       },
     },
   ],
   [
     {
       'Caps Lock': {
-        classes: ['keyboard-button--service', 'keyboard-button--caps-lock'],
+        classes: ['keyboard-button--service', 'keyboard-button--capslock'],
         eng: 'Caps Lock',
+        keycode: 20,
       },
     },
     {
@@ -263,6 +292,7 @@ const keys = [
         ru: 'ф',
         engUpper: 'A',
         ruUpper: 'Ф',
+        keycode: 65,
       },
     },
     {
@@ -272,6 +302,7 @@ const keys = [
         ru: 'ы',
         engUpper: 'S',
         ruUpper: 'Ы',
+        keycode: 83,
       },
     },
     {
@@ -281,6 +312,7 @@ const keys = [
         ru: 'в',
         engUpper: 'D',
         ruUpper: 'В',
+        keycode: 68,
       },
     },
     {
@@ -290,6 +322,7 @@ const keys = [
         ru: 'а',
         engUpper: 'F',
         ruUpper: 'А',
+        keycode: 70,
       },
     },
     {
@@ -299,6 +332,7 @@ const keys = [
         ru: 'п',
         engUpper: 'G',
         ruUpper: 'П',
+        keycode: 71,
       },
     },
     {
@@ -308,6 +342,7 @@ const keys = [
         ru: 'р',
         engUpper: 'H',
         ruUpper: 'Р',
+        keycode: 72,
       },
     },
     {
@@ -317,6 +352,7 @@ const keys = [
         ru: 'о',
         engUpper: 'J',
         ruUpper: 'О',
+        keycode: 74,
       },
     },
     {
@@ -326,6 +362,7 @@ const keys = [
         ru: 'л',
         engUpper: 'K',
         ruUpper: 'Л',
+        keycode: 75,
       },
     },
     {
@@ -335,6 +372,7 @@ const keys = [
         ru: 'д',
         engUpper: 'L',
         ruUpper: 'Д',
+        keycode: 76,
       },
     },
     {
@@ -344,29 +382,33 @@ const keys = [
         ru: 'ж',
         engUpper: ':',
         ruUpper: 'Ж',
+        keycode: 186,
       },
     },
     {
       "'": {
         classes: ['keyboard-button--symbol'],
-        eng: '\'',
+        eng: "'",
         ru: 'э',
         engUpper: '"',
         ruUpper: '"',
+        keycode: 222,
       },
     },
     {
       Enter: {
         classes: ['keyboard-button--service', 'keyboard-button--enter'],
         eng: 'Enter',
+        keycode: 13,
       },
     },
   ],
   [
     {
       Shift: {
-        classes: ['keyboard-button--service', 'keyboard-button--shift'],
+        classes: ['keyboard-button--service', 'keyboard-button--shiftleft'],
         eng: 'Shift',
+        keycode: 16,
       },
     },
     {
@@ -376,6 +418,7 @@ const keys = [
         ru: 'я',
         engUpper: 'Z',
         ruUpper: 'Я',
+        keycode: 90,
       },
     },
     {
@@ -385,6 +428,7 @@ const keys = [
         ru: 'ч',
         engUpper: 'X',
         ruUpper: 'Ч',
+        keycode: 88,
       },
     },
     {
@@ -394,6 +438,7 @@ const keys = [
         ru: 'с',
         engUpper: 'C',
         ruUpper: 'С',
+        keycode: 67,
       },
     },
     {
@@ -403,6 +448,7 @@ const keys = [
         ru: 'м',
         engUpper: 'V',
         ruUpper: 'М',
+        keycode: 86,
       },
     },
     {
@@ -412,6 +458,7 @@ const keys = [
         ru: 'и',
         engUpper: 'B',
         ruUpper: 'И',
+        keycode: 66,
       },
     },
     {
@@ -421,6 +468,7 @@ const keys = [
         ru: 'т',
         engUpper: 'N',
         ruUpper: 'Т',
+        keycode: 78,
       },
     },
     {
@@ -430,6 +478,7 @@ const keys = [
         ru: 'ь',
         engUpper: 'M',
         ruUpper: 'Ь',
+        keycode: 77,
       },
     },
     {
@@ -439,6 +488,7 @@ const keys = [
         ru: 'б',
         engUpper: '<',
         ruUpper: 'Б',
+        keycode: 188,
       },
     },
     {
@@ -448,6 +498,7 @@ const keys = [
         ru: 'ю',
         engUpper: '>',
         ruUpper: 'Ю',
+        keycode: 190,
       },
     },
     {
@@ -457,56 +508,65 @@ const keys = [
         ru: '.',
         engUpper: '?',
         ruUpper: ',',
+        keycode: 191,
       },
     },
     {
       Shift: {
-        classes: ['keyboard-button--service', 'keyboard-button--shift'],
+        classes: ['keyboard-button--service', 'keyboard-button--shiftright'],
         eng: 'Shift',
+        keycode: 16,
       },
     },
   ],
   [
     {
       Ctrl: {
-        classes: ['keyboard-button--service', 'keyboard-button--ctrl'],
+        classes: ['keyboard-button--service', 'keyboard-button--controlleft'],
         eng: 'Ctrl',
+        keycode: 17,
       },
     },
     {
       Win: {
-        classes: ['keyboard-button--service', 'keyboard-button--win'],
+        classes: ['keyboard-button--service', 'keyboard-button--metaleft'],
         eng: 'Win',
+        keycode: 91,
       },
     },
     {
       Alt: {
-        classes: ['keyboard-button--service', 'keyboard-button--alt'],
+        classes: ['keyboard-button--service', 'keyboard-button--altleft'],
         eng: 'Alt',
+        keycode: 18,
       },
     },
     {
       Space: {
         classes: ['keyboard-button--service', 'keyboard-button--space'],
         eng: 'Space',
+        keycode: 32,
       },
     },
     {
       Alt: {
-        classes: ['keyboard-button--service', 'keyboard-button--alt'],
+        classes: ['keyboard-button--service', 'keyboard-button--altright'],
         eng: 'Alt',
+        keycode: 18,
       },
     },
     {
       Win: {
-        classes: ['keyboard-button--service', 'keyboard-button--win'],
+        classes: ['keyboard-button--service', 'keyboard-button--metaright'],
         eng: 'Win',
+        keycode: 92,
       },
     },
     {
       Ctrl: {
-        classes: ['keyboard-button--service', 'keyboard-button--ctrl'],
+        classes: ['keyboard-button--service', 'keyboard-button--controlright'],
         eng: 'Ctrl',
+        keycode: 17,
       },
     },
   ],
