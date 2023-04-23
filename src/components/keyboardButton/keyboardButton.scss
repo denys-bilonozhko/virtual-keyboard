@@ -1,0 +1,32 @@
+.keyboard-button {
+    width: 40px;
+    height: 40px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 16px;
+    line-height: 40px;
+    text-align: center;
+    cursor: pointer;
+    user-select: none; 
+    background-color: #444;
+    transition: all .4s linear;
+
+    &--service {
+        flex-grow: 1;
+        font-weight: 600;
+        background-color: #222222;
+    }
+
+    &--active {
+        background-color: #77a86e;
+    }
+
+    &--pressed {
+        border-radius: 50px;
+        background-color: #62d64d;
+    }
+
+    &--space {
+        flex-grow: 16;
+    }
+}
