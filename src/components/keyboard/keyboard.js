@@ -5,11 +5,10 @@ import keyboardRow from '../keyboardRow/keyboardRow';
 const keyboard = () => {
   const keyboardLayout = document.createElement('div');
   keyboardLayout.classList.add('keyboard');
-  keyboardLayout.append(keyboardRow(keys.firstRow));
-  keyboardLayout.append(keyboardRow(keys.secondRow));
-  keyboardLayout.append(keyboardRow(keys.thirdRow));
-  keyboardLayout.append(keyboardRow(keys.fourthRow));
-  keyboardLayout.append(keyboardRow(keys.fifthRow));
+
+  keys.forEach((key) => {
+    keyboardLayout.append(keyboardRow(key));
+  });
 
   keyboardLayout.addEventListener('mousedown', (event) => {
     if (event.target.classList.contains('keyboard-button')) {
@@ -35,6 +34,7 @@ const keyboard = () => {
       event.target.classList.remove('keyboard-button--pressed');
     }
   });
+
   return keyboardLayout;
 };
 

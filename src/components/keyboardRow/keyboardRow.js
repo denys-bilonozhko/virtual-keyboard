@@ -5,9 +5,8 @@ const keyboardRow = (keys) => {
   const row = document.createElement('div');
   row.classList.add('row');
   keys.forEach((key) => {
-    const keyName = Object.keys(key)[0];
-    const classes = key[keyName];
-    row.append(keyboardButton(keyName, classes));
+    const keyObject = key[Object.keys(key)];
+    row.append(keyboardButton(keyObject));
   });
   return row;
 };
