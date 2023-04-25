@@ -4,22 +4,50 @@ import keyboardRow from '../keyboardRow/keyboardRow';
 import textInput from '../textInput/textInput';
 
 const keyboardInput = textInput();
-let language = 'eng';
+let language = localStorage.getItem('language')
+  ? JSON.parse(localStorage.getItem('language'))
+  : localStorage.setItem('language', JSON.stringify('eng'));
 let isCapsLock = false;
 
 const keyboard = () => {
   const keyboardLayout = document.createElement('div');
   keyboardLayout.classList.add('keyboard');
   keyboardLayout.append(keyboardInput);
-  keys.forEach((key) => {
-    keyboardLayout.append(keyboardRow(key));
-  });
+
+  function loadKeys(lang) {
+    keys.forEach((key) => {
+      keyboardLayout.append(keyboardRow(key, lang));
+    });
+  }
+
+  loadKeys(language);
+
+  function insertAtCaret(text) {
+    keyboardInput.setRangeText(
+      text,
+      keyboardInput.selectionStart,
+      keyboardInput.selectionEnd,
+      'end',
+    );
+  }
+
+  function keyboardKeyDown(e) {
+    keyboardInput.focus();
+    document.querySelectorAll('.keyboard-button--symbol').forEach((key) => {
+      if (
+        e.keyCode === Number(key.dataset.keycode) ||
+        e === key.dataset.keycode
+      ) {
+        if (e.keyCode) e.preventDefault();
+        key.classList.add('keyboard-button--pressed');
+        insertAtCaret(key.textContent);
+      }
+    });
+  }
 
   keyboardLayout.addEventListener('mousedown', (event) => {
     if (event.target.classList.contains('keyboard-button--symbol')) {
-      keyboardInput.focus();
-      event.target.classList.add('keyboard-button--pressed');
-      keyboardInput.value += event.target.textContent;
+      keyboardKeyDown(event.target.dataset.keycode);
     }
   });
 
@@ -53,8 +81,10 @@ const keyboard = () => {
     if (event.ctrlKey && event.altKey) {
       if (language === 'eng') {
         language = 'ru';
+        localStorage.setItem('language', JSON.stringify(language));
       } else {
         language = 'eng';
+        localStorage.setItem('language', JSON.stringify(language));
       }
 
       changeLanguage(language);
@@ -87,26 +117,6 @@ const keyboard = () => {
       changeLanguage(language);
     }
   });
-
-  function insertAtCaret(text) {
-    keyboardInput.setRangeText(
-      text,
-      keyboardInput.selectionStart,
-      keyboardInput.selectionEnd,
-      'end',
-    );
-  }
-
-  function keyboardKeyDown(e) {
-    keyboardInput.focus();
-    document.querySelectorAll('.keyboard-button--symbol').forEach((key) => {
-      if (e.keyCode === Number(key.dataset.keycode)) {
-        e.preventDefault();
-        key.classList.add('keyboard-button--pressed');
-        insertAtCaret(key.textContent);
-      }
-    });
-  }
 
   document.body.addEventListener('keydown', (e) => keyboardKeyDown(e));
 
