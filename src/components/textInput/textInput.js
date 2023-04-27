@@ -3,7 +3,7 @@ import './textInput.scss';
 const textInput = () => {
   const textarea = document.createElement('textarea');
   textarea.className = 'keyboard-input';
-  textarea.value = 'hello';
+  textarea.value = '';
   return textarea;
 };
 
