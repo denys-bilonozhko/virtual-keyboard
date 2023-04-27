@@ -138,6 +138,7 @@ const keyboard = () => {
 
   document.body.addEventListener('keydown', (e) => {
     if (e.code === 'Tab') {
+      e.preventDefault();
       insertAtCaret('  ');
     }
 
@@ -153,7 +154,7 @@ const keyboard = () => {
 
     document.querySelectorAll('.keyboard-button--service').forEach((key) => {
       if (key.classList.contains(`keyboard-button--${e.code.toLowerCase()}`)) {
-        e.preventDefault();
+        if (e.code === !'Backspace') e.preventDefault();
         document
           .querySelector(`.keyboard-button--${e.code.toLowerCase()}`)
           .classList.add('keyboard-button--pressed');

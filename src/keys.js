@@ -132,7 +132,7 @@ const keys = [
     },
     {
       Backspace: {
-        classes: ['keyboard-button--service'],
+        classes: ['keyboard-button--service', 'keyboard-button--backspace'],
         eng: 'Backspace',
         keycode: 8,
       },
