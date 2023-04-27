@@ -397,7 +397,7 @@ const keys = [
     },
     {
       Enter: {
-        classes: ['keyboard-button--service'],
+        classes: ['keyboard-button--service', 'keyboard-button--enter'],
         eng: 'Enter',
         keycode: 13,
       },
