@@ -35,8 +35,7 @@ const keyboard = () => {
     keyboardInput.focus();
     document.querySelectorAll('.keyboard-button--symbol').forEach((key) => {
       if (
-        e.keyCode === Number(key.dataset.keycode) ||
-        e === key.dataset.keycode
+        e.keyCode === Number(key.dataset.keycode) || e === key.dataset.keycode
       ) {
         if (e.keyCode) e.preventDefault();
         key.classList.add('keyboard-button--pressed');
@@ -79,20 +78,19 @@ const keyboard = () => {
 
   document.body.addEventListener('keydown', (event) => {
     if (event.ctrlKey && event.altKey) {
-      if (language === 'eng') {
+      if (language === 'eng' || language === 'engupper') {
         language = 'ru';
         localStorage.setItem('language', JSON.stringify(language));
       } else {
         language = 'eng';
         localStorage.setItem('language', JSON.stringify(language));
       }
-
+      if (isCapsLock) language += 'upper';
       changeLanguage(language);
     }
   });
 
   document.body.addEventListener('keydown', (event) => {
-    console.log(event);
     if (event.key === 'Shift') {
       if (event.repeat) return;
 
