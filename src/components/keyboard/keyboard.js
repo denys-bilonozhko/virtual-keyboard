@@ -59,12 +59,16 @@ const keyboard = () => {
     });
   }
 
-  function capsLockToggle() {
+  function capsLockToggle(e) {
     isCapsLock = !isCapsLock;
     document
       .querySelector('.keyboard-button--capslock')
       .classList.toggle('keyboard-button--pressed');
-    language = isCapsLock ? `${language}upper` : language.replace('upper', '');
+    if (e.shiftKey) {
+      language = isCapsLock ? language.replace('upper', '') : `${language}upper`;
+    } else {
+      language = isCapsLock ? `${language}upper` : language.replace('upper', '');
+    }
     changeLanguage(language);
   }
 
@@ -105,7 +109,6 @@ const keyboard = () => {
 
     if (code === 'ShiftLeft' || code === 'ShiftRight') {
       if (e.repeat) return;
-
       if (isCapsLock) {
         language = language.replace('upper', '');
       } else {
@@ -134,7 +137,7 @@ const keyboard = () => {
 
     if (code === 'CapsLock') {
       if (e.repeat) return;
-      capsLockToggle();
+      capsLockToggle(e);
       return;
     }
 
@@ -153,7 +156,7 @@ const keyboard = () => {
   }
 
   function keyboardServiceKeyUp(code, e) {
-    if (code === 'ShiftLeft' || code === 'ShiftRight') {
+    if (e.key === 'Shift' || code === 'ShiftLeft') {
       if (e.repeat) return;
       if (isCapsLock) {
         language = `${language}upper`;
