@@ -139,6 +139,7 @@ const keyboard = () => {
     }
 
     if (code === 'Backspace') {
+      e.preventDefault();
       backspace();
     }
 
