@@ -35,8 +35,7 @@ const keyboard = () => {
     keyboardInput.focus();
     document.querySelectorAll('.keyboard-button--symbol').forEach((key) => {
       if (
-        e.keyCode === Number(key.dataset.keycode) || e === key.dataset.keycode
-      ) {
+        e.keyCode === +key.dataset.keycode || e === key.dataset.keycode) {
         if (e.keyCode) e.preventDefault();
         key.classList.add('keyboard-button--pressed');
         insertAtCaret(key.textContent);
@@ -90,32 +89,6 @@ const keyboard = () => {
     }
   });
 
-  document.body.addEventListener('keydown', (event) => {
-    if (event.key === 'Shift') {
-      if (event.repeat) return;
-
-      if (isCapsLock) {
-        language = language.replace('upper', '');
-      } else {
-        language = `${language}upper`;
-      }
-
-      changeLanguage(language);
-    }
-  });
-
-  document.body.addEventListener('keyup', (event) => {
-    if (event.key === 'Shift') {
-      if (event.repeat) return;
-      if (isCapsLock) {
-        language = `${language}upper`;
-      } else {
-        language = language.replace('upper', '');
-      }
-      changeLanguage(language);
-    }
-  });
-
   document.body.addEventListener('keydown', (e) => keyboardKeyDown(e));
 
   document.body.addEventListener('keyup', (e) => {
@@ -137,6 +110,18 @@ const keyboard = () => {
   }
 
   document.body.addEventListener('keydown', (e) => {
+    if (e.code === 'ShiftLeft' || e.code === 'ShiftRight') {
+      if (e.repeat) return;
+
+      if (isCapsLock) {
+        language = language.replace('upper', '');
+      } else {
+        language = `${language}upper`;
+      }
+
+      changeLanguage(language);
+    }
+
     if (e.code === 'Tab') {
       e.preventDefault();
       insertAtCaret('  ');
@@ -163,9 +148,20 @@ const keyboard = () => {
   });
 
   document.body.addEventListener('keyup', (e) => {
+    if (e.code === 'ShiftLeft' || e.code === 'ShiftRight') {
+      if (e.repeat) return;
+      if (isCapsLock) {
+        language = `${language}upper`;
+      } else {
+        language = language.replace('upper', '');
+      }
+      changeLanguage(language);
+    }
+
     if (e.code === 'CapsLock') {
       return;
     }
+
     document.querySelectorAll('.keyboard-button--service').forEach((key) => {
       if (key.classList.contains(`keyboard-button--${e.code.toLowerCase()}`)) {
         document
