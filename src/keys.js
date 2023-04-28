@@ -406,7 +406,7 @@ const keys = [
   [
     {
       Shift: {
-        classes: ['keyboard-button--service', 'keyboard-button--shiftleft'],
+        classes: ['keyboard-button--service', 'keyboard-button--shiftleft', 'keyboard-button--shiftright'],
         eng: 'Shift',
         keycode: 'ShiftLeft',
       },
@@ -526,21 +526,21 @@ const keys = [
   [
     {
       Ctrl: {
-        classes: ['keyboard-button--service', 'keyboard-button--controlleft'],
+        classes: ['keyboard-button--service', 'keyboard-button--controlleft', 'keyboard-button--controlright'],
         eng: 'Ctrl',
         keycode: 'ControlLeft',
       },
     },
     {
       Win: {
-        classes: ['keyboard-button--service', 'keyboard-button--metaleft'],
+        classes: ['keyboard-button--service', 'keyboard-button--metaleft', 'keyboard-button--metaright'],
         eng: 'Win',
         keycode: 'MetaLeft',
       },
     },
     {
       Alt: {
-        classes: ['keyboard-button--service', 'keyboard-button--altleft'],
+        classes: ['keyboard-button--service', 'keyboard-button--altleft', 'keyboard-button--altright'],
         eng: 'Alt',
         keycode: 'AltLeft',
       },
