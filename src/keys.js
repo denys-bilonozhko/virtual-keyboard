@@ -512,10 +512,14 @@ const keys = [
       },
     },
     {
-      Shift: {
-        classes: ['keyboard-button--service', 'keyboard-button--shiftright'],
-        eng: 'Shift',
-        keycode: 'ShiftRight',
+      ArrowUp: {
+        classes: [
+          'keyboard-button--service',
+          'keyboard-button--arrowup',
+          'keyboard-button--arrow',
+        ],
+        eng: '↑',
+        keycode: 'ArrowUp',
       },
     },
   ],
@@ -549,24 +553,36 @@ const keys = [
       },
     },
     {
-      Alt: {
-        classes: ['keyboard-button--service', 'keyboard-button--altright'],
-        eng: 'Alt',
-        keycode: 18,
+      ArrowLeft: {
+        classes: [
+          'keyboard-button--service',
+          'keyboard-button--arrowleft',
+          'keyboard-button--arrow',
+        ],
+        eng: '←',
+        keycode: 'ArrowLeft',
       },
     },
     {
-      Win: {
-        classes: ['keyboard-button--service', 'keyboard-button--metaright'],
-        eng: 'Win',
-        keycode: 92,
+      ArrowDown: {
+        classes: [
+          'keyboard-button--service',
+          'keyboard-button--arrowdown',
+          'keyboard-button--arrow',
+        ],
+        eng: '↓',
+        keycode: 'ArrowDown',
       },
     },
     {
-      Ctrl: {
-        classes: ['keyboard-button--service', 'keyboard-button--controlright'],
-        eng: 'Ctrl',
-        keycode: 17,
+      ArrowRight: {
+        classes: [
+          'keyboard-button--service',
+          'keyboard-button--arrowright',
+          'keyboard-button--arrow',
+        ],
+        eng: '→',
+        keycode: 'ArrowRight',
       },
     },
   ],

@@ -7,9 +7,9 @@
     line-height: 40px;
     text-align: center;
     cursor: pointer;
-    user-select: none; 
+    user-select: none;
     background-color: #444;
-    transition: all .4s linear;
+    transition: all 0.4s linear;
 
     &--service {
         flex-grow: 1;
@@ -26,8 +26,23 @@
         background-color: #62d64d;
     }
 
-    &--space, &--backspace {
+    &--space,
+    &--backspace {
         flex-shrink: 0;
         flex-grow: 16;
+    }
+
+    &--arrow {
+        width: 40px;
+        flex-grow: 0;
+    }
+
+    &--arrowup {
+        margin-right: 45px;
+    }
+
+    &--shiftleft {
+        width: 120px;
+        flex-grow: 0;
     }
 }
