@@ -13,6 +13,7 @@ const keyboard = () => {
   const keyboardLayout = document.createElement('div');
   keyboardLayout.classList.add('keyboard');
   keyboardLayout.append(keyboardInput);
+  keyboardInput.focus();
 
   function loadKeys(lang) {
     keys.forEach((key) => {
@@ -31,42 +32,25 @@ const keyboard = () => {
     );
   }
 
-  function keyboardKeyDown(e) {
-    keyboardInput.focus();
-    document.querySelectorAll('.keyboard-button--symbol').forEach((key) => {
-      if (
-        e.keyCode === +key.dataset.keycode || e === key.dataset.keycode) {
-        if (e.keyCode) e.preventDefault();
-        key.classList.add('keyboard-button--pressed');
-        insertAtCaret(key.textContent);
+  function backspace() {
+    const start = keyboardInput.selectionStart;
+    const end = keyboardInput.selectionEnd;
+
+    if (!keyboardInput.setRangeText) {
+      return;
+    }
+    if (start >= end) {
+      if (start <= 0 || !keyboardInput.setSelectionRange) {
+        return;
       }
-    });
+      keyboardInput.setSelectionRange(start - 1, start);
+    }
+
+    keyboardInput.setRangeText('');
+    const e = document.createEvent('HTMLEvents');
+    e.initEvent('input', true, false);
+    keyboardInput.dispatchEvent(e);
   }
-
-  keyboardLayout.addEventListener('mousedown', (event) => {
-    if (event.target.classList.contains('keyboard-button--symbol')) {
-      keyboardKeyDown(event.target.dataset.keycode);
-    }
-  });
-
-  keyboardLayout.addEventListener('mouseup', (event) => {
-    if (event.target.classList.contains('keyboard-button--symbol')) {
-      event.target.classList.remove('keyboard-button--pressed');
-    }
-  });
-
-  keyboardLayout.addEventListener('mouseover', (event) => {
-    if (event.target.classList.contains('keyboard-button')) {
-      event.target.classList.add('keyboard-button--active');
-    }
-  });
-
-  keyboardLayout.addEventListener('mouseout', (event) => {
-    if (event.target.classList.contains('keyboard-button')) {
-      event.target.classList.remove('keyboard-button--active');
-      event.target.classList.remove('keyboard-button--pressed');
-    }
-  });
 
   function changeLanguage(lang) {
     document.querySelectorAll('.keyboard-button--symbol').forEach((key) => {
@@ -74,31 +58,6 @@ const keyboard = () => {
       currentKey.textContent = key.dataset[lang];
     });
   }
-
-  document.body.addEventListener('keydown', (event) => {
-    if (event.ctrlKey && event.altKey) {
-      if (language === 'eng' || language === 'engupper') {
-        language = 'ru';
-        localStorage.setItem('language', JSON.stringify(language));
-      } else {
-        language = 'eng';
-        localStorage.setItem('language', JSON.stringify(language));
-      }
-      if (isCapsLock) language += 'upper';
-      changeLanguage(language);
-    }
-  });
-
-  document.body.addEventListener('keydown', (e) => keyboardKeyDown(e));
-
-  document.body.addEventListener('keyup', (e) => {
-    e.preventDefault();
-    document.querySelectorAll('.keyboard-button--symbol').forEach((key) => {
-      if (e.keyCode === Number(key.dataset.keycode)) {
-        key.classList.remove('keyboard-button--pressed');
-      }
-    });
-  });
 
   function capsLockToggle() {
     isCapsLock = !isCapsLock;
@@ -109,8 +68,42 @@ const keyboard = () => {
     changeLanguage(language);
   }
 
-  document.body.addEventListener('keydown', (e) => {
-    if (e.code === 'ShiftLeft' || e.code === 'ShiftRight') {
+  function keyboardKeyDown(e) {
+    keyboardInput.focus();
+    document.querySelectorAll('.keyboard-button--symbol').forEach((key) => {
+      if (e.keyCode === +key.dataset.keycode || e === key.dataset.keycode) {
+        if (e.keyCode) e.preventDefault();
+        key.classList.add('keyboard-button--pressed');
+        insertAtCaret(key.textContent);
+      }
+    });
+  }
+
+  function keyboardKeyUp(e) {
+    e.preventDefault();
+    document.querySelectorAll('.keyboard-button--symbol').forEach((key) => {
+      if (e.keyCode === Number(key.dataset.keycode)) {
+        key.classList.remove('keyboard-button--pressed');
+      }
+    });
+  }
+
+  function keyboardServiceKeyDown(code, e) {
+    keyboardInput.focus();
+    if (e.ctrlKey && e.altKey) {
+      if (e.shiftKey) return;
+      if (language === 'eng' || language === 'engupper') {
+        language = 'ru';
+        localStorage.setItem('language', JSON.stringify(language));
+      } else {
+        language = 'eng';
+        localStorage.setItem('language', JSON.stringify(language));
+      }
+      if (isCapsLock) language += 'upper';
+      changeLanguage(language);
+    }
+
+    if (code === 'ShiftLeft' || code === 'ShiftRight') {
       if (e.repeat) return;
 
       if (isCapsLock) {
@@ -122,33 +115,44 @@ const keyboard = () => {
       changeLanguage(language);
     }
 
-    if (e.code === 'Tab') {
+    if (code === 'Tab') {
       e.preventDefault();
       insertAtCaret('  ');
     }
 
-    if (e.code === 'Space') {
+    if (code === 'Space') {
+      e.preventDefault();
+      keyboardInput.focus();
       insertAtCaret(' ');
     }
 
-    if (e.code === 'CapsLock') {
+    if (code === 'Enter') {
+      e.preventDefault();
+      keyboardInput.focus();
+      insertAtCaret('\n');
+    }
+
+    if (code === 'CapsLock') {
       if (e.repeat) return;
       capsLockToggle();
       return;
     }
 
+    if (code === 'Backspace') {
+      backspace();
+    }
+
     document.querySelectorAll('.keyboard-button--service').forEach((key) => {
-      if (key.classList.contains(`keyboard-button--${e.code.toLowerCase()}`)) {
-        if (e.code === !'Backspace') e.preventDefault();
+      if (key.classList.contains(`keyboard-button--${code.toLowerCase()}`)) {
         document
-          .querySelector(`.keyboard-button--${e.code.toLowerCase()}`)
+          .querySelector(`.keyboard-button--${code.toLowerCase()}`)
           .classList.add('keyboard-button--pressed');
       }
     });
-  });
+  }
 
-  document.body.addEventListener('keyup', (e) => {
-    if (e.code === 'ShiftLeft' || e.code === 'ShiftRight') {
+  function keyboardServiceKeyUp(code, e) {
+    if (code === 'ShiftLeft' || code === 'ShiftRight') {
       if (e.repeat) return;
       if (isCapsLock) {
         language = `${language}upper`;
@@ -158,18 +162,62 @@ const keyboard = () => {
       changeLanguage(language);
     }
 
-    if (e.code === 'CapsLock') {
+    if (code === 'CapsLock') {
       return;
     }
 
     document.querySelectorAll('.keyboard-button--service').forEach((key) => {
-      if (key.classList.contains(`keyboard-button--${e.code.toLowerCase()}`)) {
+      if (key.classList.contains(`keyboard-button--${code.toLowerCase()}`)) {
         document
-          .querySelector(`.keyboard-button--${e.code.toLowerCase()}`)
+          .querySelector(`.keyboard-button--${code.toLowerCase()}`)
           .classList.remove('keyboard-button--pressed');
       }
     });
+  }
+
+  keyboardLayout.addEventListener('mousedown', (event) => {
+    keyboardInput.focus();
+    if (event.target.classList.contains('keyboard-button--symbol')) {
+      keyboardKeyDown(event.target.dataset.keycode);
+    }
+
+    if (event.target.classList.contains('keyboard-button--service')) {
+      keyboardServiceKeyDown(event.target.dataset.keycode, event);
+    }
   });
+
+  keyboardLayout.addEventListener('mouseup', (event) => {
+    if (event.target.classList.contains('keyboard-button--symbol')) {
+      event.target.classList.remove('keyboard-button--pressed');
+    }
+
+    if (event.target.classList.contains('keyboard-button--service')) {
+      keyboardServiceKeyUp(event.target.dataset.keycode, event);
+    }
+  });
+
+  keyboardLayout.addEventListener('mouseover', (event) => {
+    if (event.target.classList.contains('keyboard-button')) {
+      event.target.classList.add('keyboard-button--active');
+    }
+  });
+
+  keyboardLayout.addEventListener('mouseout', (event) => {
+    if (event.target.classList.contains('keyboard-button--capslock')) {
+      event.target.classList.remove('keyboard-button--active');
+      return;
+    }
+
+    if (event.target.classList.contains('keyboard-button')) {
+      event.target.classList.remove('keyboard-button--active');
+      event.target.classList.remove('keyboard-button--pressed');
+    }
+  });
+
+  document.body.addEventListener('keydown', (e) => keyboardKeyDown(e));
+  document.body.addEventListener('keydown', (e) => keyboardServiceKeyDown(e.code, e));
+  document.body.addEventListener('keyup', (e) => keyboardKeyUp(e));
+  document.body.addEventListener('keyup', (e) => keyboardServiceKeyUp(e.code, e));
 
   return keyboardLayout;
 };

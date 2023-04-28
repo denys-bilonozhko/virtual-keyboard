@@ -134,7 +134,7 @@ const keys = [
       Backspace: {
         classes: ['keyboard-button--service', 'keyboard-button--backspace'],
         eng: 'Backspace',
-        keycode: 8,
+        keycode: 'Backspace',
       },
     },
   ],
@@ -143,7 +143,7 @@ const keys = [
       Tab: {
         classes: ['keyboard-button--service', 'keyboard-button--tab'],
         eng: 'Tab',
-        keycode: 9,
+        keycode: 'Tab',
       },
     },
     {
@@ -282,7 +282,7 @@ const keys = [
       'Caps Lock': {
         classes: ['keyboard-button--service', 'keyboard-button--capslock'],
         eng: 'Caps Lock',
-        keycode: 20,
+        keycode: 'CapsLock',
       },
     },
     {
@@ -399,7 +399,7 @@ const keys = [
       Enter: {
         classes: ['keyboard-button--service', 'keyboard-button--enter'],
         eng: 'Enter',
-        keycode: 13,
+        keycode: 'Enter',
       },
     },
   ],
@@ -408,7 +408,7 @@ const keys = [
       Shift: {
         classes: ['keyboard-button--service', 'keyboard-button--shiftleft'],
         eng: 'Shift',
-        keycode: 16,
+        keycode: 'ShiftLeft',
       },
     },
     {
@@ -515,7 +515,7 @@ const keys = [
       Shift: {
         classes: ['keyboard-button--service', 'keyboard-button--shiftright'],
         eng: 'Shift',
-        keycode: 16,
+        keycode: 'ShiftRight',
       },
     },
   ],
@@ -524,28 +524,28 @@ const keys = [
       Ctrl: {
         classes: ['keyboard-button--service', 'keyboard-button--controlleft'],
         eng: 'Ctrl',
-        keycode: 17,
+        keycode: 'ControlLeft',
       },
     },
     {
       Win: {
         classes: ['keyboard-button--service', 'keyboard-button--metaleft'],
         eng: 'Win',
-        keycode: 91,
+        keycode: 'MetaLeft',
       },
     },
     {
       Alt: {
         classes: ['keyboard-button--service', 'keyboard-button--altleft'],
         eng: 'Alt',
-        keycode: 18,
+        keycode: 'AltLeft',
       },
     },
     {
       Space: {
         classes: ['keyboard-button--service', 'keyboard-button--space'],
         eng: 'Space',
-        keycode: 32,
+        keycode: 'Space',
       },
     },
     {
