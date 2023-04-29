@@ -15,24 +15,24 @@ const keyboard = () => {
   keyboardLayout.append(keyboardInput);
   keyboardInput.focus();
 
-  function loadKeys(lang) {
+  const loadKeys = (lang) => {
     keys.forEach((key) => {
       keyboardLayout.append(keyboardRow(key, lang));
     });
-  }
+  };
 
   loadKeys(language);
 
-  function insertAtCaret(text) {
+  const insertAtCaret = (text) => {
     keyboardInput.setRangeText(
       text,
       keyboardInput.selectionStart,
       keyboardInput.selectionEnd,
       'end',
     );
-  }
+  };
 
-  function backspace() {
+  const backspace = () => {
     const start = keyboardInput.selectionStart;
     const end = keyboardInput.selectionEnd;
 
@@ -50,16 +50,16 @@ const keyboard = () => {
     const e = document.createEvent('HTMLEvents');
     e.initEvent('input', true, false);
     keyboardInput.dispatchEvent(e);
-  }
+  };
 
-  function changeLanguage(lang) {
+  const changeLanguage = (lang) => {
     document.querySelectorAll('.keyboard-button--symbol').forEach((key) => {
       const currentKey = key;
       currentKey.textContent = key.dataset[lang];
     });
-  }
+  };
 
-  function capsLockToggle(e) {
+  const capsLockToggle = (e) => {
     isCapsLock = !isCapsLock;
     document
       .querySelector('.keyboard-button--capslock')
@@ -70,9 +70,9 @@ const keyboard = () => {
       language = isCapsLock ? `${language}upper` : language.replace('upper', '');
     }
     changeLanguage(language);
-  }
+  };
 
-  function keyboardKeyDown(e) {
+  const keyboardKeyDown = (e) => {
     keyboardInput.focus();
     document.querySelectorAll('.keyboard-button--symbol').forEach((key) => {
       if (e.keyCode === +key.dataset.keycode || e === key.dataset.keycode) {
@@ -81,18 +81,18 @@ const keyboard = () => {
         insertAtCaret(key.textContent);
       }
     });
-  }
+  };
 
-  function keyboardKeyUp(e) {
+  const keyboardKeyUp = (e) => {
     e.preventDefault();
     document.querySelectorAll('.keyboard-button--symbol').forEach((key) => {
       if (e.keyCode === Number(key.dataset.keycode)) {
         key.classList.remove('keyboard-button--pressed');
       }
     });
-  }
+  };
 
-  function keyboardServiceKeyDown(code, e) {
+  const keyboardServiceKeyDown = (code, e) => {
     keyboardInput.focus();
     if (e.ctrlKey && e.altKey) {
       if (e.shiftKey) return;
@@ -154,9 +154,9 @@ const keyboard = () => {
           .classList.add('keyboard-button--pressed');
       }
     });
-  }
+  };
 
-  function keyboardServiceKeyUp(code, e) {
+  const keyboardServiceKeyUp = (code, e) => {
     if (e.key === 'Shift' || code === 'ShiftLeft') {
       if (e.repeat) return;
       if (isCapsLock) {
@@ -178,7 +178,7 @@ const keyboard = () => {
           .classList.remove('keyboard-button--pressed');
       }
     });
-  }
+  };
 
   keyboardLayout.addEventListener('mousedown', (event) => {
     keyboardInput.focus();

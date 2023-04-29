@@ -1,17 +1,22 @@
 import './keyboardButton.scss';
 
-const keyboardButton = (keyObject, language) => {
+const keyboardButton = (keyData, language) => {
   const button = document.createElement('div');
   button.classList.add('keyboard-button');
-  if (keyObject.classes) {
-    button.classList.add(...keyObject.classes);
+
+  const {
+    classes, eng, ru, engUpper, ruUpper, keycode,
+  } = keyData;
+
+  if (classes) {
+    button.classList.add(...classes);
   }
-  button.setAttribute('data-eng', keyObject.eng);
-  button.setAttribute('data-engUpper', keyObject.engUpper);
-  button.setAttribute('data-ru', keyObject.ru);
-  button.setAttribute('data-ruUpper', keyObject.ruUpper);
-  button.setAttribute('data-keycode', keyObject.keycode);
-  button.innerText = keyObject[language] || keyObject.eng;
+  button.setAttribute('data-eng', eng);
+  button.setAttribute('data-engUpper', engUpper);
+  button.setAttribute('data-ru', ru);
+  button.setAttribute('data-ruUpper', ruUpper);
+  button.setAttribute('data-keycode', keycode);
+  button.innerText = keyData[language] || eng;
 
   return button;
 };
