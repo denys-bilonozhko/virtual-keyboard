@@ -109,6 +109,7 @@ const keyboard = () => {
 
     if (code === 'ShiftLeft' || code === 'ShiftRight') {
       if (e.repeat) return;
+      if (!language) language = 'eng';
       if (isCapsLock) {
         language = language.replace('upper', '');
       } else {
