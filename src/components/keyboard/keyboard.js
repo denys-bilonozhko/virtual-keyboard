@@ -8,6 +8,7 @@ let language = localStorage.getItem('language')
   ? JSON.parse(localStorage.getItem('language'))
   : localStorage.setItem('language', JSON.stringify('eng'));
 let isCapsLock = false;
+let clipboard = '';
 
 const keyboard = () => {
   const keyboardLayout = document.createElement('div');
@@ -65,9 +66,13 @@ const keyboard = () => {
       .querySelector('.keyboard-button--capslock')
       .classList.toggle('keyboard-button--pressed');
     if (e.shiftKey) {
-      language = isCapsLock ? language.replace('upper', '') : `${language}upper`;
+      language = isCapsLock
+        ? language.replace('upper', '')
+        : `${language}upper`;
     } else {
-      language = isCapsLock ? `${language}upper` : language.replace('upper', '');
+      language = isCapsLock
+        ? `${language}upper`
+        : language.replace('upper', '');
     }
     changeLanguage(language);
   };
@@ -78,6 +83,34 @@ const keyboard = () => {
       if (e.keyCode === +key.dataset.keycode || e === key.dataset.keycode) {
         if (e.keyCode) e.preventDefault();
         key.classList.add('keyboard-button--pressed');
+
+        if (e.keyCode === 65 && e.ctrlKey) {
+          keyboardInput.select();
+          return;
+        }
+
+        const startPos = keyboardInput.selectionStart;
+        const endPos = keyboardInput.selectionEnd;
+        const selectedText = keyboardInput.value.substring(startPos, endPos);
+
+        if (e.keyCode === 88 && e.ctrlKey) {
+          keyboardInput.value = keyboardInput.value.replace(selectedText, '');
+          clipboard = selectedText;
+          navigator.clipboard.writeText(selectedText);
+          return;
+        }
+
+        if (e.keyCode === 67 && e.ctrlKey) {
+          clipboard = selectedText;
+          navigator.clipboard.writeText(selectedText);
+          return;
+        }
+
+        if (e.keyCode === 86 && e.ctrlKey) {
+          insertAtCaret(clipboard);
+          return;
+        }
+
         insertAtCaret(key.textContent);
       }
     });
@@ -121,7 +154,7 @@ const keyboard = () => {
 
     if (code === 'Tab') {
       e.preventDefault();
-      insertAtCaret('  ');
+      insertAtCaret('    ');
     }
 
     if (code === 'Space') {
