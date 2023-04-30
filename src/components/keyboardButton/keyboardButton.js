@@ -12,10 +12,10 @@ const keyboardButton = (keyData, language) => {
     button.classList.add(...classes);
   }
   button.setAttribute('data-eng', eng);
-  button.setAttribute('data-engUpper', engUpper);
-  button.setAttribute('data-ru', ru);
-  button.setAttribute('data-ruUpper', ruUpper);
-  button.setAttribute('data-keycode', keycode);
+  button.setAttribute('data-engUpper', engUpper || eng);
+  button.setAttribute('data-ru', ru || eng);
+  button.setAttribute('data-ruUpper', ruUpper || eng);
+  button.setAttribute('data-keycode', keycode || eng);
   button.innerText = keyData[language] || eng;
 
   return button;

@@ -514,12 +514,13 @@ const keys = [
     {
       ArrowUp: {
         classes: [
+          'keyboard-button--symbol',
           'keyboard-button--service',
           'keyboard-button--arrowup',
           'keyboard-button--arrow',
         ],
         eng: '↑',
-        keycode: 'ArrowUp',
+        keycode: '38',
       },
     },
   ],
@@ -555,34 +556,37 @@ const keys = [
     {
       ArrowLeft: {
         classes: [
+          'keyboard-button--symbol',
           'keyboard-button--service',
           'keyboard-button--arrowleft',
           'keyboard-button--arrow',
         ],
         eng: '←',
-        keycode: 'ArrowLeft',
+        keycode: '37',
       },
     },
     {
       ArrowDown: {
         classes: [
+          'keyboard-button--symbol',
           'keyboard-button--service',
           'keyboard-button--arrowdown',
           'keyboard-button--arrow',
         ],
         eng: '↓',
-        keycode: 'ArrowDown',
+        keycode: '40',
       },
     },
     {
       ArrowRight: {
         classes: [
+          'keyboard-button--symbol',
           'keyboard-button--service',
           'keyboard-button--arrowright',
           'keyboard-button--arrow',
         ],
         eng: '→',
-        keycode: 'ArrowRight',
+        keycode: '39',
       },
     },
   ],
