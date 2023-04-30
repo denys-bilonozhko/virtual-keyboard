@@ -5,6 +5,7 @@
     color: #fff;
     font-size: 16px;
     line-height: 40px;
+    font-family: 'Roboto Mono', monospace;
     text-align: center;
     cursor: pointer;
     user-select: none;
@@ -13,7 +14,7 @@
 
     &--service {
         flex-grow: 1;
-        font-weight: 600;
+        font-weight: 400;
         background-color: #222222;
     }
 
