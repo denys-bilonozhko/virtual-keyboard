@@ -97,6 +97,8 @@ const keyboard = () => {
           keyboardInput.value = keyboardInput.value.replace(selectedText, '');
           clipboard = selectedText;
           navigator.clipboard.writeText(selectedText);
+          keyboardInput.selectionStart = startPos;
+          keyboardInput.selectionEnd = startPos;
           return;
         }
 
