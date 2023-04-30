@@ -129,6 +129,7 @@ const keyboard = () => {
 
   const keyboardServiceKeyDown = (code, e) => {
     keyboardInput.focus();
+    e.preventDefault();
     if (e.ctrlKey && e.altKey) {
       if (e.shiftKey) return;
       if (language === 'eng' || language === 'engupper') {
@@ -155,18 +156,15 @@ const keyboard = () => {
     }
 
     if (code === 'Tab') {
-      e.preventDefault();
       insertAtCaret('\t');
     }
 
     if (code === 'Space') {
-      e.preventDefault();
       keyboardInput.focus();
       insertAtCaret(' ');
     }
 
     if (code === 'Enter') {
-      e.preventDefault();
       keyboardInput.focus();
       insertAtCaret('\n');
     }
@@ -178,7 +176,6 @@ const keyboard = () => {
     }
 
     if (code === 'Backspace') {
-      e.preventDefault();
       backspace();
     }
 
