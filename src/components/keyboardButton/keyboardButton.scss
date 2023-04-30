@@ -5,7 +5,7 @@
     color: #fff;
     font-size: 16px;
     line-height: 40px;
-    font-family: 'Roboto Mono', monospace;
+    font-family: "Roboto Mono", monospace;
     text-align: center;
     cursor: pointer;
     user-select: none;
@@ -38,12 +38,12 @@
         flex-grow: 0;
     }
 
-    &--arrowup {
-        margin-right: 45px;
-    }
-
     &--shiftleft {
         width: 120px;
+        flex-grow: 0;
+    }
+
+    &--language {
         flex-grow: 0;
     }
 }

@@ -113,6 +113,10 @@ const keyboard = () => {
           return;
         }
 
+        if (key.dataset.keycode === 'language') {
+          return;
+        }
+
         insertAtCaret(key.textContent);
       }
     });
@@ -130,7 +134,7 @@ const keyboard = () => {
   const keyboardServiceKeyDown = (code, e) => {
     keyboardInput.focus();
     e.preventDefault();
-    if (e.ctrlKey && e.altKey) {
+    if (e.ctrlKey && e.altKey || code === 'language') {
       if (e.shiftKey) return;
       if (language === 'eng' || language === 'engupper') {
         language = 'ru';

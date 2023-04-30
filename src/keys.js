@@ -523,6 +523,20 @@ const keys = [
         keycode: '38',
       },
     },
+    {
+      Language: {
+        classes: [
+          'keyboard-button--symbol',
+          'keyboard-button--service',
+          'keyboard-button--language',
+        ],
+        eng: 'en',
+        ru: 'ru',
+        engUpper: 'EN',
+        ruUpper: 'RU',
+        keycode: 'language',
+      },
+    },
   ],
   [
     {
