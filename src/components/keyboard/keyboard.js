@@ -154,7 +154,7 @@ const keyboard = () => {
 
     if (code === 'Tab') {
       e.preventDefault();
-      insertAtCaret('    ');
+      insertAtCaret('\t');
     }
 
     if (code === 'Space') {
