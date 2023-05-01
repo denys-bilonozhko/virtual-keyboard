@@ -14,7 +14,6 @@ const keyboard = () => {
   const keyboardLayout = document.createElement('div');
   keyboardLayout.classList.add('keyboard');
   keyboardLayout.append(keyboardInput);
-  keyboardInput.focus();
 
   const loadKeys = (lang) => {
     keys.forEach((key) => {
@@ -134,7 +133,7 @@ const keyboard = () => {
   const keyboardServiceKeyDown = (code, e) => {
     keyboardInput.focus();
     e.preventDefault();
-    if (e.ctrlKey && e.altKey || code === 'language') {
+    if ((e.ctrlKey && e.altKey) || code === 'language') {
       if (e.shiftKey) return;
       if (language === 'eng' || language === 'engupper') {
         language = 'ru';
@@ -164,12 +163,10 @@ const keyboard = () => {
     }
 
     if (code === 'Space') {
-      keyboardInput.focus();
       insertAtCaret(' ');
     }
 
     if (code === 'Enter') {
-      keyboardInput.focus();
       insertAtCaret('\n');
     }
 
@@ -217,7 +214,6 @@ const keyboard = () => {
   };
 
   keyboardLayout.addEventListener('mousedown', (event) => {
-    keyboardInput.focus();
     if (event.target.classList.contains('keyboard-button--symbol')) {
       keyboardKeyDown(event.target.dataset.keycode);
     }
