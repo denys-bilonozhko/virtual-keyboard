@@ -3,7 +3,7 @@ import keys from '../../keys';
 import keyboardRow from '../keyboardRow/keyboardRow';
 import textInput from '../textInput/textInput';
 
-const keyboardInput = textInput();
+const keyboardInput = textInput.textarea;
 let language = localStorage.getItem('language')
   ? JSON.parse(localStorage.getItem('language'))
   : localStorage.setItem('language', JSON.stringify('eng'));

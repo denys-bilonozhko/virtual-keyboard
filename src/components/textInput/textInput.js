@@ -1,10 +1,13 @@
 import './textInput.scss';
 
-const textInput = () => {
-  const textarea = document.createElement('textarea');
-  textarea.className = 'keyboard-input';
-  textarea.value = '';
-  return textarea;
-};
+class TextInput {
+  constructor(className) {
+    this.textarea = document.createElement('textarea');
+    this.textarea.className = className;
+    this.value = this.textarea.value;
+  }
+}
+
+const textInput = new TextInput('keyboard-input');
 
 export default textInput;
