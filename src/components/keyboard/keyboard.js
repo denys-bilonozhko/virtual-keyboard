@@ -93,7 +93,9 @@ const keyboard = () => {
         const selectedText = keyboardInput.value.substring(startPos, endPos);
 
         if (e.keyCode === 88 && e.ctrlKey) {
-          keyboardInput.value = keyboardInput.value.replace(selectedText, '');
+          const text = keyboardInput.value.split('');
+          text.splice(startPos, endPos);
+          keyboardInput.value = text.join('');
           clipboard = selectedText;
           navigator.clipboard.writeText(selectedText);
           keyboardInput.selectionStart = startPos;
