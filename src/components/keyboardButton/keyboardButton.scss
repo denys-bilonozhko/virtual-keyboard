@@ -1,0 +1,49 @@
+.keyboard-button {
+    width: 40px;
+    height: 40px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 16px;
+    line-height: 40px;
+    font-family: "Roboto Mono", monospace;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+    background-color: #444;
+    transition: all 0.4s linear;
+
+    &--service {
+        flex-grow: 1;
+        font-weight: 400;
+        background-color: #222222;
+    }
+
+    &--active {
+        background-color: #77a86e;
+    }
+
+    &--pressed {
+        border-radius: 50px;
+        background-color: #62d64d;
+    }
+
+    &--space,
+    &--backspace {
+        flex-shrink: 0;
+        flex-grow: 16;
+    }
+
+    &--arrow {
+        width: 40px;
+        flex-grow: 0;
+    }
+
+    &--shiftleft {
+        width: 120px;
+        flex-grow: 0;
+    }
+
+    &--language {
+        flex-grow: 0;
+    }
+}
