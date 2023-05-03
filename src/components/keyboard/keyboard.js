@@ -55,7 +55,17 @@ const keyboard = () => {
   const changeLanguage = (lang) => {
     document.querySelectorAll('.keyboard-button--symbol').forEach((key) => {
       const currentKey = key;
-      currentKey.textContent = key.dataset[lang];
+      if (!key.classList.contains('keyboard-button--digit')) {
+        currentKey.textContent = key.dataset[lang];
+      }
+
+      if (key.classList.contains('keyboard-button--special')) {
+        if (lang === 'ruupper') {
+          currentKey.textContent = key.dataset.ruupper;
+        } else if (lang === 'ru') {
+          currentKey.textContent = key.dataset.ru;
+        }
+      }
     });
   };
 
@@ -145,6 +155,11 @@ const keyboard = () => {
         localStorage.setItem('language', JSON.stringify(language));
       }
       if (isCapsLock) language += 'upper';
+      document.querySelectorAll('.keyboard-button--digit').forEach((digit) => {
+        const currentKey = digit;
+        const currentLang = JSON.parse(localStorage.getItem('language'));
+        currentKey.textContent = digit.dataset[currentLang];
+      });
       changeLanguage(language);
     }
 
@@ -156,7 +171,11 @@ const keyboard = () => {
       } else {
         language = `${language}upper`;
       }
-
+      document.querySelectorAll('.keyboard-button--digit').forEach((digit) => {
+        const currentKey = digit;
+        const currentLang = JSON.parse(localStorage.getItem('language'));
+        currentKey.textContent = digit.dataset[`${currentLang}upper`];
+      });
       changeLanguage(language);
     }
 
@@ -199,6 +218,12 @@ const keyboard = () => {
       } else {
         language = language.replace('upper', '');
       }
+      document.querySelectorAll('.keyboard-button--digit').forEach((digit) => {
+        const currentKey = digit;
+        const currentLang = JSON.parse(localStorage.getItem('language'));
+        currentKey.textContent = digit.dataset[currentLang];
+      });
+
       changeLanguage(language);
     }
 

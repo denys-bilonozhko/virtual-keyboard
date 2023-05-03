@@ -2,7 +2,7 @@ const keys = [
   [
     {
       '`': {
-        classes: ['keyboard-button--symbol'],
+        classes: ['keyboard-button--symbol', 'keyboard-button--digit', 'keyboard-button--special'],
         eng: '`',
         ru: 'ё',
         engUpper: '~',
@@ -12,7 +12,7 @@ const keys = [
     },
     {
       1: {
-        classes: ['keyboard-button--symbol'],
+        classes: ['keyboard-button--symbol', 'keyboard-button--digit'],
         eng: '1',
         ru: '1',
         engUpper: '!',
@@ -22,7 +22,7 @@ const keys = [
     },
     {
       2: {
-        classes: ['keyboard-button--symbol'],
+        classes: ['keyboard-button--symbol', 'keyboard-button--digit'],
         eng: '2',
         ru: '2',
         engUpper: '@',
@@ -32,7 +32,7 @@ const keys = [
     },
     {
       3: {
-        classes: ['keyboard-button--symbol'],
+        classes: ['keyboard-button--symbol', 'keyboard-button--digit'],
         eng: '3',
         ru: '3',
         engUpper: '#',
@@ -42,7 +42,7 @@ const keys = [
     },
     {
       4: {
-        classes: ['keyboard-button--symbol'],
+        classes: ['keyboard-button--symbol', 'keyboard-button--digit'],
         eng: '4',
         ru: '4',
         engUpper: '$',
@@ -52,7 +52,7 @@ const keys = [
     },
     {
       5: {
-        classes: ['keyboard-button--symbol'],
+        classes: ['keyboard-button--symbol', 'keyboard-button--digit'],
         eng: '5',
         ru: '5',
         engUpper: '%',
@@ -62,7 +62,7 @@ const keys = [
     },
     {
       6: {
-        classes: ['keyboard-button--symbol'],
+        classes: ['keyboard-button--symbol', 'keyboard-button--digit'],
         eng: '6',
         ru: '6',
         engUpper: '^',
@@ -72,7 +72,7 @@ const keys = [
     },
     {
       7: {
-        classes: ['keyboard-button--symbol'],
+        classes: ['keyboard-button--symbol', 'keyboard-button--digit'],
         eng: '7',
         ru: '7',
         engUpper: '&',
@@ -82,7 +82,7 @@ const keys = [
     },
     {
       8: {
-        classes: ['keyboard-button--symbol'],
+        classes: ['keyboard-button--symbol', 'keyboard-button--digit'],
         eng: '8',
         ru: '8',
         engUpper: '*',
@@ -92,7 +92,7 @@ const keys = [
     },
     {
       9: {
-        classes: ['keyboard-button--symbol'],
+        classes: ['keyboard-button--symbol', 'keyboard-button--digit'],
         eng: '9',
         ru: '9',
         engUpper: '(',
@@ -102,7 +102,7 @@ const keys = [
     },
     {
       0: {
-        classes: ['keyboard-button--symbol'],
+        classes: ['keyboard-button--symbol', 'keyboard-button--digit'],
         eng: '0',
         ru: '0',
         engUpper: ')',
@@ -112,7 +112,7 @@ const keys = [
     },
     {
       '-': {
-        classes: ['keyboard-button--symbol'],
+        classes: ['keyboard-button--symbol', 'keyboard-button--digit'],
         eng: '-',
         ru: '-',
         engUpper: '_',
@@ -122,7 +122,7 @@ const keys = [
     },
     {
       '=': {
-        classes: ['keyboard-button--symbol'],
+        classes: ['keyboard-button--symbol', 'keyboard-button--digit'],
         eng: '=',
         ru: '=',
         engUpper: '+',
@@ -242,13 +242,13 @@ const keys = [
         eng: 'p',
         ru: 'з',
         engUpper: 'P',
-        ruUpper: 'P',
+        ruUpper: 'З',
         keycode: 80,
       },
     },
     {
       '[': {
-        classes: ['keyboard-button--symbol'],
+        classes: ['keyboard-button--symbol', 'keyboard-button--digit', 'keyboard-button--special'],
         eng: '[',
         ru: 'х',
         engUpper: '{',
@@ -258,7 +258,7 @@ const keys = [
     },
     {
       ']': {
-        classes: ['keyboard-button--symbol'],
+        classes: ['keyboard-button--symbol', 'keyboard-button--digit', 'keyboard-button--special'],
         eng: ']',
         ru: 'ъ',
         engUpper: '}',
@@ -268,7 +268,7 @@ const keys = [
     },
     {
       '\\': {
-        classes: ['keyboard-button--symbol'],
+        classes: ['keyboard-button--symbol', 'keyboard-button--digit'],
         eng: '\\',
         ru: '\\',
         engUpper: '|',
@@ -377,7 +377,7 @@ const keys = [
     },
     {
       ';': {
-        classes: ['keyboard-button--symbol'],
+        classes: ['keyboard-button--symbol', 'keyboard-button--digit', 'keyboard-button--special'],
         eng: ';',
         ru: 'ж',
         engUpper: ':',
@@ -387,11 +387,11 @@ const keys = [
     },
     {
       "'": {
-        classes: ['keyboard-button--symbol'],
+        classes: ['keyboard-button--symbol', 'keyboard-button--digit', 'keyboard-button--special'],
         eng: "'",
         ru: 'э',
         engUpper: '"',
-        ruUpper: '"',
+        ruUpper: 'Э',
         keycode: 222,
       },
     },
@@ -483,7 +483,7 @@ const keys = [
     },
     {
       ',': {
-        classes: ['keyboard-button--symbol'],
+        classes: ['keyboard-button--symbol', 'keyboard-button--digit', 'keyboard-button--special'],
         eng: ',',
         ru: 'б',
         engUpper: '<',
@@ -493,7 +493,7 @@ const keys = [
     },
     {
       '.': {
-        classes: ['keyboard-button--symbol'],
+        classes: ['keyboard-button--symbol', 'keyboard-button--digit', 'keyboard-button--special'],
         eng: '.',
         ru: 'ю',
         engUpper: '>',
@@ -503,7 +503,7 @@ const keys = [
     },
     {
       '/': {
-        classes: ['keyboard-button--symbol'],
+        classes: ['keyboard-button--symbol', 'keyboard-button--digit'],
         eng: '/',
         ru: '.',
         engUpper: '?',
