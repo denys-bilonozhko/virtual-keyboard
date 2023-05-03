@@ -1,0 +1,7 @@
+@import url(https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap);
+html{box-sizing:border-box}body{display:flex;flex-direction:column;justify-content:center;align-items:center}
+.keyboard{max-width:680px;width:100%;display:flex;flex-direction:column;gap:5px}
+.keyboard-row{display:flex;justify-content:space-between;width:100%;gap:5px}
+.keyboard-button{width:40px;height:40px;border-radius:3px;color:#fff;font-size:16px;line-height:40px;font-family:"Roboto Mono",monospace;text-align:center;cursor:pointer;user-select:none;background-color:#444;transition:all .4s linear}.keyboard-button--service{flex-grow:1;font-weight:400;background-color:#222}.keyboard-button--active{background-color:#77a86e}.keyboard-button--pressed{border-radius:50px;background-color:#62d64d}.keyboard-button--space,.keyboard-button--backspace{flex-shrink:0;flex-grow:16}.keyboard-button--arrow{width:40px;flex-grow:0}.keyboard-button--shiftleft{width:120px;flex-grow:0}.keyboard-button--language{flex-grow:0}
+.keyboard-input{display:block;height:200px;margin:20px 0 20px;font-size:16px;tab-size:3.5}
+.info{text-align:center}
